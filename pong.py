@@ -7,6 +7,9 @@ wn.title('Pong by Yaboi')
 wn.bgcolor("orange")
 wn.setup(width = 800  ,height=600)
 wn.tracer(0)
+# score keeper
+score_a = 0
+score_b = 0
 
 # bat A
 bat_a = turtle.Turtle()
@@ -35,6 +38,15 @@ ball.penup()
 ball.goto(0, 0)
 ball.dx = 0.25
 ball.dy = -0.25
+
+# pen score
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("black")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A : 0     Player B : 0", align = "center", font = {"Courier", 24, "bold"})
 
 # functions of the gaming hell
 def bat_a_up():
@@ -84,10 +96,16 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0,0)
         ball.dx *= -1
+        score_a += 1
+        pen.clear()
+        pen.write("Player A : {}     Player B : {}".format(score_a, score_b) , align = "center", font = {"Courier", 24, "bold"})
     
     if ball.xcor() < -390:
         ball.goto(0,0)
         ball.dx *= -1
+        score_b += 1
+        pen.clear()
+        pen.write("Player A : {}     Player B : {}".format(score_a, score_b) , align = "center", font = {"Courier", 24, "bold"})
 
     # ball n boll collision
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < bat_b.ycor() + 40 and ball.ycor() > bat_b.ycor() - 40):
