@@ -1,12 +1,14 @@
 # simple pong in python
 
 import turtle
+import winsound
 
 wn = turtle.Screen()
 wn.title('Pong by Yaboi')
 wn.bgcolor("orange")
 wn.setup(width = 800  ,height=600)
 wn.tracer(0)
+
 # score keeper
 score_a = 0
 score_b = 0
@@ -36,8 +38,8 @@ ball.shape("circle")
 ball.color("black")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.25
-ball.dy = -0.25
+ball.dx = 0.5
+ball.dy = 0.5
 
 # pen score
 pen = turtle.Turtle()
@@ -88,10 +90,12 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+        winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
     
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+        winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
     
     if ball.xcor() > 390:
         ball.goto(0,0)
@@ -111,7 +115,9 @@ while True:
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < bat_b.ycor() + 40 and ball.ycor() > bat_b.ycor() - 40):
         ball.setx(340)
         ball.dx *= -1
+        winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
 
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < bat_a.ycor() + 40 and ball.ycor() > bat_a.ycor() - 40):
         ball.setx(-340)
         ball.dx *= -1
+        winsound.PlaySound("bounce.wav",winsound.SND_ASYNC)
