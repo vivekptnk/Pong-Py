@@ -3,7 +3,7 @@
 import turtle
 
 wn = turtle.Screen()
-wn.title('Pong by Ya boi')
+wn.title('Pong by Yaboi')
 wn.bgcolor("orange")
 wn.setup(width = 800  ,height=600)
 wn.tracer(0)
@@ -33,8 +33,8 @@ ball.shape("circle")
 ball.color("black")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 2
-ball.dy = -2
+ball.dx = 0.25
+ball.dy = -0.25
 
 # functions of the gaming hell
 def bat_a_up():
@@ -87,4 +87,13 @@ while True:
     
     if ball.xcor() < -390:
         ball.goto(0,0)
+        ball.dx *= -1
+
+    # ball n boll collision
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < bat_b.ycor() + 40 and ball.ycor() > bat_b.ycor() - 40):
+        ball.setx(340)
+        ball.dx *= -1
+
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < bat_a.ycor() + 40 and ball.ycor() > bat_a.ycor() - 40):
+        ball.setx(-340)
         ball.dx *= -1
