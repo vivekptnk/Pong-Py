@@ -33,6 +33,8 @@ ball.shape("circle")
 ball.color("black")
 ball.penup()
 ball.goto(0, 0)
+ball.dx = 2
+ball.dy = -2
 
 # functions of the gaming hell
 def bat_a_up():
@@ -65,3 +67,24 @@ wn.onkeypress(bat_b_down,"Down")
 # Game Loop
 while True:
     wn.update()
+
+    # ball movement 
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    # border control
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1
+    
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1
+    
+    if ball.xcor() > 390:
+        ball.goto(0,0)
+        ball.dx *= -1
+    
+    if ball.xcor() < -390:
+        ball.goto(0,0)
+        ball.dx *= -1
