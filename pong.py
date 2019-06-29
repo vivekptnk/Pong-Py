@@ -34,6 +34,34 @@ ball.color("black")
 ball.penup()
 ball.goto(0, 0)
 
+# functions of the gaming hell
+def bat_a_up():
+    y = bat_a.ycor()
+    y +=  20
+    bat_a.sety(y)
+
+def bat_a_down():
+    y = bat_a.ycor()
+    y -= 20
+    bat_a.sety(y)
+
+def bat_b_up():
+    y = bat_b.ycor()
+    y +=  20
+    bat_b.sety(y)
+
+def bat_b_down():
+    y = bat_b.ycor()
+    y -= 20
+    bat_b.sety(y)
+
+# key bindingsz
+wn.listen()
+wn.onkeypress(bat_a_up,"w")
+wn.onkeypress(bat_a_down,"s")
+wn.onkeypress(bat_b_up,"Up")
+wn.onkeypress(bat_b_down,"Down")
+
 # Game Loop
 while True:
     wn.update()
